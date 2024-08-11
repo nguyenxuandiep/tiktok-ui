@@ -1,11 +1,21 @@
 import styles from './Header.module.scss';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleQuestion,  faCoins, faEarthAsia, faEllipsisVertical, faGear, faKeyboard, faSignOut, faUser } from '@fortawesome/free-solid-svg-icons';
+import {
+    faCircleQuestion,
+    faCoins,
+    faEarthAsia,
+    faEllipsisVertical,
+    faGear,
+    faKeyboard,
+    faSignOut,
+    faUser,
+} from '@fortawesome/free-solid-svg-icons';
+import {Link} from 'react-router-dom';
 import Tippy from '@tippyjs/react'; // different import path!
 
+import routesConfig from '~/config/routes';
 import images from '~/assets/images';
-
 import Button from '../../../components/Button';
 import Menu from '~/components/Popper/Menu';
 import 'tippy.js/dist/tippy.css';
@@ -16,86 +26,87 @@ const cx = classNames.bind(styles);
 
 const MENU_ITEMS = [
     {
-        icon: <FontAwesomeIcon icon = {faEarthAsia} />,
+        icon: <FontAwesomeIcon icon={faEarthAsia} />,
         title: 'English',
         children: {
             title: 'Language',
-            data:[
+            data: [
                 {
                     type: 'language',
                     code: 'en',
-                    title: 'English'
-                },{
+                    title: 'English',
+                },
+                {
                     type: 'language',
 
                     code: 'vi',
-                    title: 'Tiếng việt'
-                },{
+                    title: 'Tiếng việt',
+                },
+                {
                     type: 'language',
                     code: 'en',
-                    title: 'English'
+                    title: 'English',
                 },
-            ]
-        }
+            ],
+        },
     },
     {
-        icon: <FontAwesomeIcon icon = {faCircleQuestion} />,
+        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
         title: 'Feedback and Help',
-        to: '/feedback'
+        to: '/feedback',
     },
     {
-        icon: <FontAwesomeIcon icon = {faKeyboard} />,
-        title: 'KEyboard shortcuts'
-    }
-]
+        icon: <FontAwesomeIcon icon={faKeyboard} />,
+        title: 'KEyboard shortcuts',
+    },
+];
 
 function Header() {
-    
-    const currentUser = true ;
- 
-    
+    const currentUser = true;
 
-    // Handle logic 
+    // Handle logic
     const handleMenuChange = (menuItem) => {
-        switch(menuItem.type) {
+        switch (menuItem.type) {
             case 'language':
-            //Handle change language
+                //Handle change language
                 break;
             default:
         }
     };
 
-
     const userMenu = [
         {
-            icon: <FontAwesomeIcon icon = {faUser} />,
+            icon: <FontAwesomeIcon icon={faUser} />,
             title: 'View profile',
-            to: '/@hoaa'
+            to: '/@hoaa',
         },
         {
-            icon: <FontAwesomeIcon icon = {faCoins} />,
+            icon: <FontAwesomeIcon icon={faCoins} />,
             title: 'Get coins',
-            to: '/coin'
-        },{
-            icon: <FontAwesomeIcon icon = {faGear} />,
+            to: '/coin',
+        },
+        {
+            icon: <FontAwesomeIcon icon={faGear} />,
             title: 'Settings',
-            to: '/setting'
+            to: '/setting',
         },
         ...MENU_ITEMS,
         {
-            icon: <FontAwesomeIcon icon = {faSignOut} />,
+            icon: <FontAwesomeIcon icon={faSignOut} />,
             title: 'Log out',
             to: '/logout',
             separate: true,
         },
-    ]
+    ];
 
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                    <img src={images.logo} alt="Tiktok" />
-                
-                <Search/>
+                <Link to={routesConfig.home} className ={cx('logo-link')}>
+                    <img src={images.logo} alt="Tiktok" />{' '}
+                </Link>
+                 
+                <Search />
                 {/* Search  */}
 
                 <div className={cx('actions')}>
@@ -128,7 +139,7 @@ function Header() {
                         </>
                     )}
 
-                    <Menu items={ currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
+                    <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
                             <Image
                                 className={cx('user-avtar')}
