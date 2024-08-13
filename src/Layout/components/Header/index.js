@@ -11,7 +11,7 @@ import {
     faSignOut,
     faUser,
 } from '@fortawesome/free-solid-svg-icons';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Tippy from '@tippyjs/react'; // different import path!
 
 import routesConfig from '~/config/routes';
@@ -41,6 +41,41 @@ const MENU_ITEMS = [
 
                     code: 'vi',
                     title: 'Tiếng việt',
+                },
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English',
                 },
                 {
                     type: 'language',
@@ -102,10 +137,10 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <Link to={routesConfig.home} className ={cx('logo-link')}>
+                <Link to={routesConfig.home} className={cx('logo-link')}>
                     <img src={images.logo} alt="Tiktok" />{' '}
                 </Link>
-                 
+
                 <Search />
                 {/* Search  */}
 
