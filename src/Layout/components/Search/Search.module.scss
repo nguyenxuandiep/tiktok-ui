@@ -16,11 +16,12 @@
     input {
         flex            : 1;
         height          : 100%;
+        padding-right   : 40px;
         color           : var(--black);
         caret-color     : var(--primary);
         font-size       : 1.6rem;
         background-color: transparent;
-        font-family: var(--font-family);
+        font-family     : var(--font-family);
     }
 
     input:not(:placeholder-shown)~.search-btn {
@@ -55,20 +56,24 @@
     position : absolute;
     right    : calc(var(--search-button-width) + 16px);
     top      : 50%;
-    transform: translateY(-50%) ;
+    transform: translateY(-50%);
     color    : rgba(22, 24, 35, 0.34);
 }
 
 .loading {
     animation: spinner 0.8s linear infinite;
 }
+
 @keyframes spinner {
     from {
         transform: translateY(-50%) rotate(0);
-    } to {
+    }
+
+    to {
         transform: translateY(-50%) rotate(360deg);
     }
 }
+
 .search-btn {
     width                     : var(--search-button-width);
     height                    : 100%;
